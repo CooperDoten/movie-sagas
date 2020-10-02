@@ -19,7 +19,14 @@ fetchMovieList = () => {
     return (
       <div className="App">
         <h1>Movies!</h1>
-        <MovieItem />
+        <div className="movieList">
+            {this.props.reduxState.movies.map((movie, i) => 
+                <MovieItem 
+                key={i}
+                movie={movie}
+                />
+        )}
+        </div>
         <p>Empty Page</p>
       </div>
     );

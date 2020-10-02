@@ -1,16 +1,34 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './MovieItem.css';
+import {Link} from 'react-router-dom';
 
 class MovieItem extends Component {
-  // Renders the entire app on the DOM
+state = {
+    movie: {}
+}
+moreDetails = (movie) => {
+    console.log('navigate to moreDetails', movie);
+    this.setState({
+        movie: this.movie
+    })
+    this.props.dispatch({
+        type: 'FETCH_MOVIE',
+        payload: movie
+    })
+    
+}
   render() {
     return (
-      <div className="App">
-        <h1>MovieItem!</h1>
-       
-        <p>We're in movie Item</p>
-      </div>
+       <div className="movieItem"
+       onClick={() => this.moreDetails(this.props.movie)}>
+           <Link to='/moreDetails'>
+         <img src={this.props.movie.poster} alt="movie poster"/>
+         {/* <Route path= '/moreDetails' exact>
+            <MoreDetails />
+          </Route> */}
+          </Link>
+       </div>
     );
   }
 }
