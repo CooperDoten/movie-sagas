@@ -15,16 +15,11 @@ fetchMovieList = () => {
         type: 'FETCH_MOVIELIST'
     });
 }
-//onClick send user to AddMovie component
-toAddMovie = () => {
-  this.props.history.push('/AddMovie');
-}
   render() {
      console.log('movielist reduxState', this.props.reduxState);
     return (
       <Router>
         <div className="homePage">
-            <button onClick={this.toAddMovie}>Add A Movie!</button>
             {/* loop through our movieList and send to MovieItem component */}
               <div className="movieList">
                   {this.props.reduxState.movies.map((movie, i) => 

@@ -1,0 +1,35 @@
+.homeHeader{
+    display: flex;
+    flex-direction: row;
+    
+}
+.addMovieButton{
+    position: absolute;
+    right: 7%;
+    top: 15%;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 30px;
+    font-family: 'Raleway', sans-serif;
+}
+.addMovieButton:hover{
+    font-size: 200%;
+    transition: .3s ease;
+}
+.HomeButton{
+    position: absolute;
+    right: 8%;
+    top: 8%;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 30px;
+    font-family: 'Raleway', sans-serif;
+}
+.HomeButton:hover{
+    font-size: 200%;
+    transition: .3s ease;
+}

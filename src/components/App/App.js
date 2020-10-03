@@ -6,14 +6,17 @@ import Movies from '../Movies/Movies';
 import MoreDetails from '../MoreDetails/MoreDetails';
 import DetailItem from '../DetailItem/DetailItem';
 import AddMovie from '../AddMovie/AddMovie';
-
+import AddMovieButton from '../AddMovieButton/AddMovieButton'
 class App extends Component {
+  
   // Renders the entire app on the DOM
  //send all routes for components
   render() {
     return (
+      // <button onClick={this.toAddMovie}>Add A Movie!</button>
       <div className="App">
         <Router>
+        <AddMovieButton />
           <Route path= '/' exact>
             <Movies />
           </Route>
