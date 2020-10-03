@@ -17,7 +17,19 @@ const title = req.params.title;
   .catch( (error) => {
     console.log('got an error in genre.router', error);
     res.sendStatus(500);
+  });
 });
-});
+router.get('/', (req, res) => {
+  console.log('in our genres get')
+  const queryText = `SELECT * FROM "genres" ORDER BY name ASC`;
+  pool.query(queryText)
+      .then( (result) => {
+          res.send(result.rows);
+      })
+      .catch( (error) => {
+          console.log(`Error on query ${error}`);
+          res.sendStatus(500);
+      });
+})
 
 module.exports = router;
