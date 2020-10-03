@@ -15,8 +15,11 @@ moreDetails = (movie) => {
     this.props.dispatch({
         type: 'FETCH_MOVIE',
         payload: movie
-    })
-    
+    });
+    this.props.dispatch({
+        type: 'FETCH_GENRE',
+        payload: {title: movie.title}
+    });
 }
   render() {
     return (

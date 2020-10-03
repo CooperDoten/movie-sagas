@@ -41,10 +41,25 @@ function* fetchMovieSaga(action){
         });
         console.log('this is our movie', response.data);
 }
+function* fetchGenreSaga(action){ 
+    console.log('made it into fetchGenreSaga', action.payload);
+    //TO DO make this real
+    let response = yield axios({
+            method: 'GET',
+            url: `/api/genre/${action.payload.title}`,
+        })
+        console.log('response', response.data)
+        yield put({
+            type: 'SET_GENRE',
+            payload: response.data
+        });
+        console.log('this is our movie', response.data);
+}
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery("FETCH_MOVIELIST", fetchMovieListSaga);
     yield takeEvery("FETCH_MOVIE", fetchMovieSaga);
+    yield takeEvery("FETCH_GENRE", fetchGenreSaga);
 }
 
 // Create sagaMiddleware
@@ -77,12 +92,21 @@ const genres = (state = [], action) => {
             return state;
     }
 }
+const genre = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_GENRE':
+            return action.payload;
+        default:
+            return state;
+    }
+}
 
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movie,
         movies,
+        genre,
         genres,
     }),
     // Add sagaMiddleware to our store
