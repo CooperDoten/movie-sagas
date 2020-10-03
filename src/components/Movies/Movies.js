@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { HashRouter as Router} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import './Movies.css';
 import MovieItem from '../MovieItem/MovieItem';
 
@@ -17,22 +19,24 @@ fetchMovieList = () => {
   render() {
      console.log('movielist reduxState', this.props.reduxState);
     return (
-      <div className="App">
-        <h1>Movies!</h1>
-        <div className="movieList">
-            {this.props.reduxState.movies.map((movie, i) => 
-                <MovieItem 
-                key={i}
-                movie={movie}
-                />
-        )}
+      <Router>
+        <div className="App">
+          <h1>Movies!</h1>
+          <div className="movieList">
+              {this.props.reduxState.movies.map((movie, i) => 
+                  <MovieItem 
+                  key={i}
+                  movie={movie}
+                  />
+          )}
+          </div>
+          <p>Empty Page</p>
         </div>
-        <p>Empty Page</p>
-      </div>
+      </Router>
     );
   }
 }
 const mapStateToProps = (reduxState) => ({
     reduxState,
 });
-export default connect(mapStateToProps)(Movies);
+export default connect(mapStateToProps)(withRouter(Movies));

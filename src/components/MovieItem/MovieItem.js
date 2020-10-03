@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './MovieItem.css';
 import {Link} from 'react-router-dom';
+import {withRouter, HashRouter as Router} from 'react-router-dom';
 
 class MovieItem extends Component {
 state = {
@@ -23,6 +24,7 @@ moreDetails = (movie) => {
 }
   render() {
     return (
+      <Router>
        <div className="movieItem"
        onClick={() => this.moreDetails(this.props.movie)}>
            <Link to='/moreDetails'>
@@ -32,8 +34,9 @@ moreDetails = (movie) => {
           </Route> */}
           </Link>
        </div>
+       </Router>
     );
   }
 }
 
-export default connect()(MovieItem);
+export default connect()(withRouter(MovieItem));
