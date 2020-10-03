@@ -7,7 +7,6 @@ import './AddMovie.css';
 
 class AddMovie extends Component {
 
-
     componentDidMount() {
         this.fetchGenres();
     }
@@ -18,7 +17,7 @@ class AddMovie extends Component {
             description: '',
             genre_id: ''
         },
-        select: '',
+        value: null
     }
     fetchGenres = () => {
         this.props.dispatch({
@@ -39,8 +38,9 @@ class AddMovie extends Component {
                 title: '',
                 poster: '',
                 description: '',
-                genre_id: '',
+                genre_id: ''
             },
+            value: null
         });
     }
     onChange = (event, propertyName) => {
@@ -52,9 +52,9 @@ class AddMovie extends Component {
         });
         console.log(this.state.movie);
     }
-    onChangeGenre = (event, name) => {
+    onChangeGenre = (event) => {
         
-        console.log('made it into onChangeGenre', event.target.value, name);
+        console.log('made it into onChangeGenre', event.target.value);
         for(let i=0; i<this.props.reduxState.genres.length; i++){
             if(this.props.reduxState.genres[i].name === event.target.value){
                 console.log('we have a match', this.props.reduxState.genres[i])
@@ -73,6 +73,7 @@ class AddMovie extends Component {
       <Router>
           <div>
              In add movie
+             <form onSubmit={this.addMovie}>
              <input type="text" placeholder="Title" 
                 value={this.state.movie.title}
                 onChange={(event)=> this.onChange(event, 'title')}/>
@@ -82,24 +83,26 @@ class AddMovie extends Component {
              <input type="text" placeholder="Synopsis" 
              value={this.state.movie.description}
              onChange={(event)=> this.onChange(event, 'description')}/>
-             <select onChange={(event) => this.onChangeGenre(event, 'name')}> 
-                <option>-------</option>
-                 <option>Adventure</option>
-                 <option>Animated</option>
-                 <option>Biographical</option>
-                 <option>Comedy</option>
-                 <option>Disaster</option>
-                 <option>Drama</option>
-                 <option>Epic</option>
-                 <option>Fantasy</option>
-                 <option>Musical</option>
-                 <option>Romantic</option>
-                 <option>Science Fiction</option>
-                 <option>Space Opera</option>
-                 <option>Super Hero</option>
+             <label>Choose a Genre:</label>
+             <select value={this.state.value} onChange={(event) => this.onChangeGenre(event)}> 
+             <option disabled selected value> -- select an option -- </option>
+                 <option value="Adventure">Adventure</option>
+                 <option value="Animated">Animated</option>
+                 <option value="Biographical">Biographical</option>
+                 <option value="Comedy">Comedy</option>
+                 <option value="Disaster">Disaster</option>
+                 <option value="Drama">Drama</option>
+                 <option value="Epic">Epic</option>
+                 <option value="Fantasy">Fantasy</option>
+                 <option value="Musical">Musical</option>
+                 <option value="Romantic">Romantic</option>
+                 <option value="Science Fiction">Science Fiction</option>
+                 <option value="Space Opera">Space Opera</option>
+                 <option value="Super Hero">Super Hero</option>
              </select>
-             <button onClick={this.addMovie}>Save</button>
+             <button>Save</button>
              <button onClick={this.sendHome}>Cancel</button>
+             </form>
         </div>
       </Router>
     );
