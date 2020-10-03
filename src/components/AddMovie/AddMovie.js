@@ -15,9 +15,8 @@ class AddMovie extends Component {
             title: '',
             poster: '',
             description: '',
-            genre_id: ''
-        },
-        value: null
+            genre_id: 'selected'
+        }
     }
     fetchGenres = () => {
         this.props.dispatch({
@@ -38,9 +37,8 @@ class AddMovie extends Component {
                 title: '',
                 poster: '',
                 description: '',
-                genre_id: ''
-            },
-            value: null
+                genre_id: 'selected'
+            }
         });
     }
     onChange = (event, propertyName) => {
@@ -53,20 +51,13 @@ class AddMovie extends Component {
         console.log(this.state.movie);
     }
     onChangeGenre = (event) => {
-        
         console.log('made it into onChangeGenre', event.target.value);
-        for(let i=0; i<this.props.reduxState.genres.length; i++){
-            if(this.props.reduxState.genres[i].name === event.target.value){
-                console.log('we have a match', this.props.reduxState.genres[i])
-                let genre_id = this.props.reduxState.genres[i].id
-                    this.setState({
-                        movie: {
-                            ...this.state.movie,
-                            genre_id: genre_id
-                        }
-                    })
+        this.setState({
+            movie: {
+                ...this.state.movie,
+                genre_id: event.target.value
             }
-        }
+        })
     }
   render() {
     return (
@@ -84,21 +75,11 @@ class AddMovie extends Component {
              value={this.state.movie.description}
              onChange={(event)=> this.onChange(event, 'description')}/>
              <label>Choose a Genre:</label>
-             <select value={this.state.value} onChange={(event) => this.onChangeGenre(event)}> 
-             <option disabled selected value> -- select an option -- </option>
-                 <option value="Adventure">Adventure</option>
-                 <option value="Animated">Animated</option>
-                 <option value="Biographical">Biographical</option>
-                 <option value="Comedy">Comedy</option>
-                 <option value="Disaster">Disaster</option>
-                 <option value="Drama">Drama</option>
-                 <option value="Epic">Epic</option>
-                 <option value="Fantasy">Fantasy</option>
-                 <option value="Musical">Musical</option>
-                 <option value="Romantic">Romantic</option>
-                 <option value="Science Fiction">Science Fiction</option>
-                 <option value="Space Opera">Space Opera</option>
-                 <option value="Super Hero">Super Hero</option>
+             <select  value={this.state.movie.genre_id} onChange={(event) => this.onChangeGenre(event)}> 
+             <option disabled value="selected"> -- select an option -- </option>
+                 {this.props.reduxState.genres.map((genre, i) =>
+                 <option key={i} value={genre.id}>{genre.name}</option>
+                 )}
              </select>
              <button>Save</button>
              <button onClick={this.sendHome}>Cancel</button>

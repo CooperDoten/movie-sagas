@@ -29,9 +29,6 @@ moreDetails = (movie) => {
        onClick={() => this.moreDetails(this.props.movie)}>
            <Link to='/moreDetails'>
          <img src={this.props.movie.poster} alt="movie poster"/>
-         {/* <Route path= '/moreDetails' exact>
-            <MoreDetails />
-          </Route> */}
           </Link>
        </div>
        </Router>
