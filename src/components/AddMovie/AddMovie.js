@@ -17,7 +17,8 @@ class AddMovie extends Component {
             poster: '',
             description: '',
             genre_id: ''
-        }
+        },
+        select: '',
     }
     fetchGenres = () => {
         this.props.dispatch({
@@ -32,7 +33,15 @@ class AddMovie extends Component {
         this.props.dispatch({
             type: 'CREATE_MOVIE',
             payload: this.state.movie
-        })
+        });
+        this.setState({
+            movie: {
+                title: '',
+                poster: '',
+                description: '',
+                genre_id: '',
+            },
+        });
     }
     onChange = (event, propertyName) => {
         this.setState({
@@ -58,12 +67,6 @@ class AddMovie extends Component {
                     })
             }
         }
-        this.setState({
-            genre: {
-                ...this.state.genre,
-                name: event.target.value
-            }
-        });
     }
   render() {
     return (
@@ -79,7 +82,8 @@ class AddMovie extends Component {
              <input type="text" placeholder="Synopsis" 
              value={this.state.movie.description}
              onChange={(event)=> this.onChange(event, 'description')}/>
-             <select onChange={(event) => this.onChangeGenre(event, 'name')}>
+             <select onChange={(event) => this.onChangeGenre(event, 'name')}> 
+                <option>-------</option>
                  <option>Adventure</option>
                  <option>Animated</option>
                  <option>Biographical</option>
@@ -93,7 +97,6 @@ class AddMovie extends Component {
                  <option>Science Fiction</option>
                  <option>Space Opera</option>
                  <option>Super Hero</option>
-
              </select>
              <button onClick={this.addMovie}>Save</button>
              <button onClick={this.sendHome}>Cancel</button>
