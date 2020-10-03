@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../modules/pool')
+const pool = require('../modules/pool');
 
+//route set up to take data sent and 
+//perform a query to the DB to return a specific movie
 router.post('/', (req, res) => {
 console.log('our req.body is', req.body)
   const queryText = `SELECT * FROM "movies" where id = $1`;
@@ -14,6 +16,4 @@ console.log('our req.body is', req.body)
           res.sendStatus(500);
       });
 });
-
-
 module.exports = router;

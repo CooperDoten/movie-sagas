@@ -6,7 +6,7 @@ import './Movies.css';
 import MovieItem from '../MovieItem/MovieItem';
 
 class Movies extends Component {
-  // Renders the entire app on the DOM
+  // Fetch our movieList!!!
   componentDidMount() {
          this.fetchMovieList(); 
 }
@@ -15,6 +15,7 @@ fetchMovieList = () => {
         type: 'FETCH_MOVIELIST'
     });
 }
+//onClick send user to AddMovie component
 toAddMovie = () => {
   this.props.history.push('/AddMovie');
 }
@@ -23,16 +24,16 @@ toAddMovie = () => {
     return (
       <Router>
         <div className="homePage">
-        <h1>Movies!</h1>
-        <button onClick={this.toAddMovie}>Add A Movie!</button>
-          <div className="movieList">
-              {this.props.reduxState.movies.map((movie, i) => 
-                  <MovieItem 
-                  key={i}
-                  movie={movie}/>
-              )}
+            <button onClick={this.toAddMovie}>Add A Movie!</button>
+            {/* loop through our movieList and send to MovieItem component */}
+              <div className="movieList">
+                  {this.props.reduxState.movies.map((movie, i) => 
+                      <MovieItem 
+                      key={i}
+                      movie={movie}/>
+                  )}
+              </div>
           </div>
-        </div>
       </Router>
     );
   }

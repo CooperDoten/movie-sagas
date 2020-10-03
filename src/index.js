@@ -13,8 +13,8 @@ import axios from 'axios';
 import {takeEvery, put} from 'redux-saga/effects';
 
 function* fetchMovieListSaga(action){ 
+    //GET all of our movies from DB
     console.log('made it into fetchMovieListSaga');
-    //TO DO make this real
     let response = yield axios({
             method: 'GET',
             url: '/api/movie'
@@ -27,8 +27,9 @@ function* fetchMovieListSaga(action){
         console.log('this is our movie list', response.data);
 }
 function* fetchMovieSaga(action){ 
+    // check our payload and pass that information as a specific POST
+    // to the router to single out movie 
     console.log('made it into fetchMovieSaga');
-    //TO DO make this real
     let response = yield axios({
             method: 'POST',
             url: '/api/moreDetails',
@@ -42,8 +43,9 @@ function* fetchMovieSaga(action){
         console.log('this is our movie', response.data);
 }
 function* fetchGenreSaga(action){ 
+    // check our payload and pass that information as a specific GET
+    // to the DB to single out movie 
     console.log('made it into fetchGenreSaga', action.payload);
-    //TO DO make this real
     let response = yield axios({
             method: 'GET',
             url: `/api/genre/${action.payload.title}`,
@@ -56,8 +58,8 @@ function* fetchGenreSaga(action){
         console.log('this is our movie', response.data);
 }
 function* fetchGenresSaga(action){ 
+    //check our payload and return all genres from DB
     console.log('made it into fetchGenresSaga', action.payload);
-    //TO DO make this real
     let response = yield axios({
             method: 'GET',
             url: `/api/genre/`,
@@ -69,23 +71,10 @@ function* fetchGenresSaga(action){
         });
         console.log('these our our genres', response.data);
 }
-// function* addGenreSaga(action){ 
-//     console.log('made it into addGenresSaga', action.payload);
-//     //TO DO make this real
-//     let response = yield axios({
-//             method: 'POST',
-//             url: `/api/genre/`,
-//         })
-//         console.log('response', response.data)
-//         yield put({
-//             type: 'SET_GENRES',
-//             payload: response.data
-//         });
-//         console.log('these our our genres', response.data);
-// }
+
 function* addMovieSaga(action){ 
+    //sending a new movie as added by the user to DB
     console.log('made it into addMovieSaga', action.payload);
-    //TO DO make this real
         yield axios({
             method: 'POST',
             url: `/api/movie`,
@@ -97,11 +86,12 @@ function* addMovieSaga(action){
 }
 // Create the rootSaga generator function
 function* rootSaga() {
+    //Saga listening for specific dispatches and then sending data to
+    //generator functions to take data or GET data from DB
     yield takeEvery("FETCH_MOVIELIST", fetchMovieListSaga);
     yield takeEvery("FETCH_MOVIE", fetchMovieSaga);
     yield takeEvery("FETCH_GENRE", fetchGenreSaga);
     yield takeEvery("FETCH_GENRES", fetchGenresSaga);
-    //yield takeEvery("ADD_GENRES", addGenreSaga);
     yield takeEvery("CREATE_MOVIE", addMovieSaga);
 }
 
@@ -117,6 +107,7 @@ const movies = (state = [], action) => {
             return state;
     }
 }
+//return single movie from DB
 const movie = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIE':
@@ -135,6 +126,7 @@ const genres = (state = [], action) => {
             return state;
     }
 }
+//return single genre from DB
 const genre = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRE':

@@ -6,9 +6,10 @@ import Movies from '../Movies/Movies';
 import MoreDetails from '../MoreDetails/MoreDetails';
 import DetailItem from '../DetailItem/DetailItem';
 import AddMovie from '../AddMovie/AddMovie';
+
 class App extends Component {
   // Renders the entire app on the DOM
- 
+ //send all routes for components
   render() {
     return (
       <div className="App">

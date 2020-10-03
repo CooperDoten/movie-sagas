@@ -3,7 +3,9 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 router.get('/:title', (req, res) => {
-  // Add query to get all genres
+  //GET a specific genre for a specific movie
+  //based on req.params.title sent from function* fetchGenreSaga
+  //index.js line 45
 console.log('our req.params on genre', req.params)
 const title = req.params.title;
   const joinQueryText = ` SELECT * FROM "movies_genres"
@@ -20,6 +22,9 @@ const title = req.params.title;
   });
 });
 router.get('/', (req, res) => {
+  // GET all genres
+  //associated Saga function
+  //function* fetchGenresSaga index.js line 60
   console.log('in our genres get')
   const queryText = `SELECT * FROM "genres" ORDER BY name ASC`;
   pool.query(queryText)

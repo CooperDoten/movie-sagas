@@ -63,28 +63,35 @@ class AddMovie extends Component {
     return (
       <Router>
           <div>
-             In add movie
+              {/* form to add movie object with title, poster, descrip, genre 
+              onChange/onChangeGenre to update local state to send
+              onSubmit call addMovie to send data to Saga in index.js*/}
              <form onSubmit={this.addMovie}>
-             <input type="text" placeholder="Title" 
-                value={this.state.movie.title}
-                onChange={(event)=> this.onChange(event, 'title')}/>
-             <input type="text" placeholder="Image URL" 
-             value={this.state.movie.poster}
-             onChange={(event)=> this.onChange(event, 'poster')}/>
-             <input type="text" placeholder="Synopsis" 
-             value={this.state.movie.description}
-             onChange={(event)=> this.onChange(event, 'description')}/>
-             <label>Choose a Genre:</label>
-             <select  value={this.state.movie.genre_id} onChange={(event) => this.onChangeGenre(event)}> 
-             <option disabled value="selected"> -- select an option -- </option>
-                 {this.props.reduxState.genres.map((genre, i) =>
-                 <option key={i} value={genre.id}>{genre.name}</option>
-                 )}
-             </select>
-             <button>Save</button>
-             <button onClick={this.sendHome}>Cancel</button>
+                    <input type="text" placeholder="Title" 
+                        value={this.state.movie.title}
+                        onChange={(event)=> this.onChange(event, 'title')}/>
+
+                    <input type="text" placeholder="Image URL" 
+                        value={this.state.movie.poster}
+                        onChange={(event)=> this.onChange(event, 'poster')}/>
+
+                    <input type="text" placeholder="Synopsis" 
+                        value={this.state.movie.description}
+                        onChange={(event)=> this.onChange(event, 'description')}/>
+
+                    <label>Choose a Genre:</label>
+                        <select  value={this.state.movie.genre_id} onChange={(event) => this.onChangeGenre(event)}> 
+                            <option disabled value="selected"> -- select an option -- </option>
+                            {this.props.reduxState.genres.map((genre, i) =>
+                            <option key={i} value={genre.id}>{genre.name}</option>
+                            )}
+                        </select>
+                        
+                    <button>Save</button>
+                    {/* onClick send user back to the homepage */}
+                    <button onClick={this.sendHome}>Cancel</button>
              </form>
-        </div>
+            </div>
       </Router>
     );
   }
