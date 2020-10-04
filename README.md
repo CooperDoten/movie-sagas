@@ -16,7 +16,7 @@ For this project I had to problem solve several things:
 - add a movie and update database accordingly
 - work on vanilla css skills
 
-To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com)
+To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](https://limitless-river-11475.herokuapp.com/?#/)
 
 ## Screen Shot
 
