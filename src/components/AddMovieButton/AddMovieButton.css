@@ -1,12 +1,14 @@
 .homeHeader{
     display: flex;
     flex-direction: row;
-    
+    background-image: url("/images/bladerunner042.jpg");
+    background-position: center;
+    padding-bottom: 200px;
 }
 .addMovieButton{
     position: absolute;
     right: 5%;
-    top: 15%;
+    top: 12%;
     background: none;
     border: none;
     outline: none;
@@ -21,7 +23,7 @@
 .HomeButton{
     position: absolute;
     right: 6%;
-    top: 8%;
+    top: 5%;
     background: none;
     border: none;
     outline: none;
