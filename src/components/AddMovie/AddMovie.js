@@ -88,7 +88,8 @@ class AddMovie extends Component {
                         </div>
                         <div className="inputDiv">
                     <label>Choose a Genre</label>
-                        <select  value={this.state.movie.genre_id} onChange={(event) => this.onChangeGenre(event)}> 
+                        <select id="selectGenre" 
+                            value={this.state.movie.genre_id} onChange={(event) => this.onChangeGenre(event)}> 
                             <option disabled value="selected"> -- select an option -- </option>
                             {this.props.reduxState.genres.map((genre, i) =>
                             <option key={i} value={genre.id}>{genre.name}</option>
