@@ -12,11 +12,11 @@ class DetailItem extends Component {
       <Router>
           <div className="detailsDiv">
               <h1>{this.props.movie.title}</h1>
-              {/* props.movie is the movie passed from MoreDetails
-              append poster and description for more details
+              {/* props.movie is the movie passed from MoreDetails.js
+              DetailItem is appending that information
               onClick of Home button sends user back to homepage */}
               <img className="detailsPoster" 
-              src={this.props.movie.poster} alt="movie poster"/>
+                src={this.props.movie.poster} alt="movie poster"/>
                {/* loop over our genre item that was sent from movieItem
               to append specific genre(s) associated with movie */}
               <ul id="genreUl"> For fans of: {this.props.reduxState.genre.map((type, i) => 

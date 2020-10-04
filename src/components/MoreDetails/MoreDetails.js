@@ -15,8 +15,8 @@ class MoreDetails extends Component {
           onClick from movieItem */}
             {this.props.reduxState.movie.map((movie, i) => 
               < DetailItem 
-              key={i}
-              movie={movie}/>
+                key={i}
+                movie={movie}/>
             )}
         </div>
       </Router>
