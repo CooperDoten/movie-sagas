@@ -14,14 +14,15 @@ class DetailItem extends Component {
               <h1>{this.props.movie.title}</h1>
               {/* loop over our genre item that was sent from movieItem
               to append specific genre(s) associated with movie */}
-              <ul> For fans of: {this.props.reduxState.genre.map((type, i) => 
+              <ul id="genreUl"> For fans of: {this.props.reduxState.genre.map((type, i) => 
                   <li key={i}>{type.name}</li> )}
               </ul>
               {/* props.movie is the movie passed from MoreDetails
               append poster and description for more details
               onClick of Home button sends user back to homepage */}
-              <img src={this.props.movie.poster} alt="movie poster"/>
-              {this.props.movie.description}
+              <img className="detailsPoster" 
+              src={this.props.movie.poster} alt="movie poster"/>
+              <p className="detailsPara">{this.props.movie.description}</p>
           </div>
        </Router>
     );

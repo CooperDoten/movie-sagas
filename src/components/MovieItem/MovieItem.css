@@ -4,4 +4,8 @@
 img{
     border-radius: 5px;
     height: 300px;
-}
+    
+}  
+.movieItem:hover {
+    transform: translate(-5%, -5%);
+  }
