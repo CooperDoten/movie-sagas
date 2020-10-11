@@ -5,8 +5,6 @@
 
 _Duration: weekend_
 
-Directly above this is how long it took you to develop the project. Your project description goes here. What problem did you solve? How did you solve it? 
-
 I had a lot of fun with this project! I was able to incorporate a lot of the skills I've learned over the past several weeks an put it into a weekend sprint.
 For this project I had to problem solve several things:
 - get a list of movies from a database
