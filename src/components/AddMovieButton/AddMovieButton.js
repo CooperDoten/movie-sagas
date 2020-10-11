@@ -21,11 +21,13 @@ sendHome = () => {
                     src="images/Netflix_Logo_RGB.png"
                     alt="Netflix logo"/>
                     
-              <button className="addMovieButton"
-                      onClick={this.toAddMovie}>Add A Movie</button>
-
-              <button className="HomeButton"
-                      onClick={this.sendHome}>Home</button>
+              <div className="buttonWrapper">   
+                <button className="HeaderButton" 
+                        onClick={this.toAddMovie}>Add A Movie</button>
+              
+                <button className="HeaderButton"
+                        onClick={this.sendHome}>Home</button>
+               </div> 
             </div>
       </Router>
     );

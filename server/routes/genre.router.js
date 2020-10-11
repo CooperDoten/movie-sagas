@@ -12,6 +12,7 @@ const title = req.params.title;
   JOIN "movies" ON "movies"."id" = "movies_genres"."movies_id"
   JOIN "genres" ON "movies_genres"."genres_id" = "genres"."id"
  WHERE "movies"."title" = $1;`;
+
  pool.query(joinQueryText, [title])
  .then( (result) => {
   res.send(result.rows);

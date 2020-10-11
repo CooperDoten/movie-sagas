@@ -1,39 +1,46 @@
 .homeHeader{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     background-image: url("/images/bladerunner042.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding-bottom: 200px;
+    height: 400px;
+    width: 100%;
+    justify-content: space-between;
 }
-.addMovieButton{
-    position: absolute;
-    right: 5%;
-    top: 12%;
+@media only screen and (max-width: 550px){
+    .homeHeader{
+        flex-direction: column;
+        
+    }
+    .buttonWrapper{
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .HeaderButton{
+        margin: 10px 0;
+    }
+}
+.buttonWrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.HeaderButton{
     background: none;
     border: none;
     outline: none;
     color: white;
     font-size: 30px;
     font-family: 'Raleway', sans-serif;
+    margin-right: 20px;
 }
-.addMovieButton:hover{
-    font-size: 200%;
-    transition: .3s ease;
-}
-.HomeButton{
-    position: absolute;
-    right: 6%;
-    top: 5%;
-    background: none;
-    border: none;
-    outline: none;
-    color: white;
-    font-size: 30px;
-    font-family: 'Raleway', sans-serif;
-}
-.HomeButton:hover{
+.HeaderButton:hover{
     font-size: 200%;
     transition: .3s ease;
 }
